@@ -1,0 +1,47 @@
+SCHOOLSTORE · INSTALLATION UND BETRIEB
+=====================================
+
+SCHNELLSTART AUF WINDOWS
+------------------------
+1. Node.js 22.13 oder neuer installieren.
+2. Im Ordner start.bat doppelklicken.
+   Beim ersten Start ein Verwaltungs-Passwort (mindestens 12 Zeichen) setzen.
+3. Den Shop unter http://localhost:8766 öffnen.
+4. Die Verwaltung unter http://localhost:8766/verwaltung.html öffnen und mit
+   dem eben festgelegten Passwort anmelden.
+5. Das Serverfenster offen lassen. Strg+C beendet den Server.
+
+Der Shop ist eine eigenständige Unterseite (shop.html). Bestellungen werden
+serverseitig geprüft und in data/schoolstore.sqlite gespeichert. Der Bestand
+bleibt auch nach einem Neustart erhalten. Die Verwaltung kann Bestellungen
+suchen, filtern, öffnen, im Verlauf ansehen, Status und Zahlung ändern,
+Bestelldaten als CSV exportieren und einen Bestellzettel drucken. Kunden
+erhalten nach dem Bestellen eine Rechnung mit Zahlungsinformationen.
+
+SORTIMENT
+---------
+T-Shirt 17,95 € · Hoodie 38,00 € · Zip-Hoodie 40,00 € · Tasse 4,50 €.
+Starterpaket und Starterpaket+ sind sichtbar, aber nicht bestellbar, solange
+kein Preis feststeht. Die Optionen und Preise richten sich nach der
+vorliegenden Schoolstore-Bauanleitung.
+
+DATEN UND SICHERHEIT
+--------------------
+Bestellungen liegen dauerhaft in der SQLite-Datei im Ordner data. Diesen
+Ordner regelmäßig sichern. .env enthält das geheime Verwaltungs-Passwort und
+darf nicht weitergegeben oder veröffentlicht werden. Für Passwortänderungen
+.env bearbeiten und den Server neu starten. Abmelden beendet die Sitzung.
+
+Für den öffentlichen Internetbetrieb ist ein HTTPS-Webserver bzw. Reverse
+Proxy mit TLS erforderlich. Dann NODE_ENV=production setzen und die
+Anwendung hinter dem Proxy betreiben. SMTP-/E-Mail-Konten, Zahlungsanbieter,
+Domain und Hostingzugang waren nicht Teil der bereitgestellten Unterlagen;
+Bestell-E-Mails und Onlinezahlungen sind daher nicht eingerichtet. Die
+Bestellung wird zuverlässig in der Datenbank gespeichert und ist im
+Verwaltungsbereich verfügbar.
+
+TECHNIK
+-------
+Keine externen Pakete oder Cloud-Dienste. Node.js stellt HTTP und SQLite
+bereit. `npm start` startet den Server, `start.ps1` richtet beim ersten
+Start zusätzlich das Admin-Passwort ein.

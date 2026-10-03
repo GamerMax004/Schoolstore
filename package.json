@@ -1,0 +1,9 @@
+{
+  "name": "schoolstore-hgw",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Schoolstore-Webshop mit SQLite-Backend und Verwaltungsbereich",
+  "type": "module",
+  "scripts": { "start": "node server.mjs" },
+  "engines": { "node": ">=22.13" }
+}
