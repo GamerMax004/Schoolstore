@@ -27,8 +27,8 @@ Bitte prüfe die aktuellen Render-Kosten, bevor du den Blueprint erstellst.
 Das ADMIN_PASSWORD Secret dient beim allerersten Start dazu, das initiale
 Konto „admin“ anzulegen. Das Passwort wird gehasht in der Datenbank gespeichert.
 Nach Einrichtung der Datenbank ändert ein neuer Secret-Wert das bestehende
-Passwort nicht. Für einen späteren Passwortwechsel muss das Passwort in der
-Benutzerdatenbank geändert werden; das Secret allein ist nur der Erststartwert.
+Passwort nicht. Der Passwortwechsel eines bestehenden Kontos ist derzeit nicht
+als Dashboard-Funktion eingerichtet; das Secret allein ist nur der Erststartwert.
 
 BUILD-EINSTELLUNGEN
 -------------------
