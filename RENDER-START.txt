@@ -1,0 +1,40 @@
+SCHOOLSTORE AUF RENDER BEREITSTELLEN
+====================================
+
+Diese App benötigt einen Render Web Service (keine Static Site), weil Shop,
+Bestellungen und Verwaltung über das Node.js-Backend laufen.
+
+1. ZIP entpacken.
+2. Den Inhalt des entpackten Ordners in ein GitHub-Repository hochladen.
+   Die ZIP selbst kann nicht als laufender Render-Service veröffentlicht werden.
+3. In Render „New +“ → „Blueprint“ wählen und das GitHub-Repository verbinden.
+   Render liest die Datei render.yaml und richtet Web Service und Datenträger ein.
+4. Beim Einrichten den Wert für ADMIN_PASSWORD eintragen. Das Passwort muss
+   mindestens 12 Zeichen lang sein. Es wird als Umgebungs-Secret übergeben und
+   steht nicht in diesem Paket oder im GitHub-Repository.
+5. Blueprint anwenden und den ersten Deploy abwarten.
+6. Die öffentliche Render-Adresse öffnen. Für die Verwaltung „/verwaltung.html“
+   aufrufen und mit Benutzername „admin“ sowie dem ADMIN_PASSWORD anmelden.
+
+WICHTIG ZUR DATENSPEICHERUNG
+----------------------------
+Die Konfiguration nutzt einen kostenpflichtigen Render Web Service („starter“)
+mit 1 GB persistentem Datenträger. Das ist nötig, damit die SQLite-Datenbank
+mit Bestellungen, Lagerbestand, Konten und Rollen Deployments und Neustarts
+übersteht. Render Free Web Services unterstützen keine persistenten Datenträger.
+Bitte prüfe die aktuellen Render-Kosten, bevor du den Blueprint erstellst.
+
+Das ADMIN_PASSWORD Secret dient beim allerersten Start dazu, das initiale
+Konto „admin“ anzulegen. Das Passwort wird gehasht in der Datenbank gespeichert.
+Nach Einrichtung der Datenbank ändert ein neuer Secret-Wert das bestehende
+Passwort nicht. Für einen späteren Passwortwechsel muss das Passwort in der
+Benutzerdatenbank geändert werden; das Secret allein ist nur der Erststartwert.
+
+BUILD-EINSTELLUNGEN
+-------------------
+Build Command: npm install
+Start Command: npm start
+Runtime: Node.js (Version aus package.json)
+Publish Directory: nicht erforderlich – dies ist ein Web Service, keine Static Site.
+
+Die übrigen lokalen Windows-Startdateien sind für Render nicht erforderlich.

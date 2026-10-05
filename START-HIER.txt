@@ -8,15 +8,31 @@ SCHNELLSTART AUF WINDOWS
    Beim ersten Start ein Verwaltungs-Passwort (mindestens 12 Zeichen) setzen.
 3. Den Shop unter http://localhost:8766 öffnen.
 4. Die Verwaltung unter http://localhost:8766/verwaltung.html öffnen und mit
-   dem eben festgelegten Passwort anmelden.
+   Benutzername `admin` und dem eben festgelegten Administrator-Passwort
+   anmelden. Das Administrator-Konto wird beim ersten Datenbankstart angelegt.
 5. Das Serverfenster offen lassen. Strg+C beendet den Server.
 
 Der Shop ist eine eigenständige Unterseite (shop.html). Bestellungen werden
 serverseitig geprüft und in data/schoolstore.sqlite gespeichert. Der Bestand
-bleibt auch nach einem Neustart erhalten. Die Verwaltung kann Bestellungen
-suchen, filtern, öffnen, im Verlauf ansehen, Status und Zahlung ändern,
-Bestelldaten als CSV exportieren und einen Bestellzettel drucken. Kunden
-erhalten nach dem Bestellen eine Rechnung mit Zahlungsinformationen.
+bleibt auch nach einem Neustart erhalten. Im Dashboard gibt es aktive
+Bestellungen und ein Archiv für abgeschlossene oder stornierte Bestellungen.
+Status, Zahlung, CSV-Export und Bestellzettel sind über Rollenrechte steuerbar.
+Im Lagerbereich lassen sich Bestände pro Variante setzen. Sobald die
+Lagerführung für eine Variante aktiviert ist, zieht der Shop bestellte Mengen
+automatisch ab; beim Stornieren werden sie gutgeschrieben. Nicht erfasste
+Varianten bleiben ohne Bestandslimit bestellbar. Kunden erhalten nach dem
+Bestellen eine Rechnung mit Zahlungsinformationen.
+
+TEAMZUGÄNGE UND RECHTE
+----------------------
+Unter „Team & Rollen“ zuerst eine Rolle anlegen und deren Rechte auswählen.
+Danach einen zeitlich begrenzten Registrierungslink für diese Rolle erstellen
+und an das Teammitglied weitergeben. Das Mitglied legt darüber Benutzername,
+E-Mail-Adresse und ein Passwort mit mindestens 12 Zeichen an. Links können
+auf bis zu 100 Registrierungen begrenzt und vor Ablauf gesperrt werden. Rechte
+werden serverseitig geprüft; nicht erlaubte Dashboard-Aktionen sind auch über
+direkte API-Aufrufe gesperrt. Das Administrator-Konto und seine Rolle sind
+geschützt.
 
 SORTIMENT
 ---------
